@@ -458,7 +458,13 @@ Blu.fn.timestamps.getAll = function() {
     _p['action'] = 'list-timestamps';
 
     // Requête
-    $.getJSON( Blu.app.urls.ajax_base, _p, function(data) {
+    
+
+    var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
+
+    $.getJSON( _url, _p, function(data) {
 
         if( data.timestamps ) {
             
@@ -658,7 +664,13 @@ Blu.fn.topWordsUsers = function() {
     var _p = Blu.fn.project.ajaxParams();
     _p['action'] = 'top-words-users';
 
-    $.getJSON( Blu.app.urls.ajax_base, _p, function(data) {
+
+
+    var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
+
+    $.getJSON( _url, _p, function(data) {
         Blu.wordsBase = data.top_words;
         Blu.usersBase = data.top_users;
     });
@@ -2421,7 +2433,11 @@ Blu.fn.project.grabNewTweets = function( options ) {
         }
         
         
-        $.getJSON( Blu.app.urls.main + '/projects/refresh-tweets', _p, function( json ) {
+
+    var _url = Blu.app.urls.main + '/projects/refresh-tweets';
+
+    _url = Blu.fn.modifierUrl(_url);
+        $.getJSON( _url, _p, function( json ) {
             
             if( json.success ) {
                 
@@ -2512,8 +2528,15 @@ Blu.fn.tweets.load = function( options ) {
     /*
      * Chargement des tweets en Ajax
      */
+
+
+
+     var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
+    
     $.getJSON(
-        Blu.app.urls.ajax_base, 
+        _url, 
         _p, 
         function( json ) {
             
@@ -6342,7 +6365,13 @@ Blu.fn.project.getLastGraph = function() {
         };
     }
     
-    $.getJSON( Blu.app.urls.ajax_base, _p, function( json ) {
+
+
+
+     var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
+    $.getJSON( _url, _p, function( json ) {
         
         Blu.log("Last graph is known, now let's load it...");
         Blu.has.loadedGraph = true;
@@ -6374,7 +6403,12 @@ Blu.fn.project.getAllGraphs = function() {
         };
     }
 
-    $.getJSON( Blu.app.urls.ajax_base, _p, function(json) {
+
+
+    var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
+    $.getJSON( _url, _p, function(json) {
 
         Blu.has.loadedAllGraphs = true;
         
@@ -6435,7 +6469,13 @@ Blu.fn.map.createGraph = function( options, callback ) {
     Blu.is.creatingGraph = true;
     
     //$.getJSON( Blu.app.urls.ajax_base, _p, function( json ) {
-    $.getJSON( Blu.app.urls.main + '/projects/create-graph', _p, function( json ) {
+
+
+
+     var _url = Blu.app.urls.main + '/projects/create-graph';
+
+    _url = Blu.fn.modifierUrl(_url);
+    $.getJSON( _url, _p, function( json ) {
 
         if( typeof callback === 'function' ) {
             callback( json );
@@ -6459,8 +6499,12 @@ Blu.fn.project.getGraph = function( options, callback ) {
     _p['action'] = 'get-graph';
     _p['graph']  = options;
     
+
+    var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
     
-    $.getJSON( Blu.app.urls.ajax_base, _p, function( json ) {
+    $.getJSON( _url, _p, function( json ) {
 
         if( typeof callback === 'function' ) {
             callback( json );
@@ -6518,8 +6562,14 @@ Blu.fn.map.chargeGraphe = function( graph ) {
     /**
      * Chargement du graphe au format JSON
      */
+
+
+
+     var _url = Blu.app.urls.graphs_base + Blu.projects.current.graphs_dir + graph.filename;
+
+    _url = Blu.fn.modifierUrl(_url);
     $.getJSON( 
-        Blu.app.urls.graphs_base + Blu.projects.current.graphs_dir + graph.filename, 
+        _url, 
         function( json ) {
             
             Blu.log('Graph JSON chargé');
@@ -9453,8 +9503,14 @@ Blu.fn.app.twitterAuthRequest = function( api_function, api_params, callback ) {
         'api_params'    : api_params,
         'refresh'       : Math.random()
     };
+
+
+
+    var _url = Blu.app.urls.main + '/twitter-api';
+
+    _url = Blu.fn.modifierUrl(_url);
      
-   var _request = $.getJSON( Blu.app.urls.main + '/twitter-api', _params, function( json, status, request ) {
+   var _request = $.getJSON( _url, _params, function( json, status, request ) {
         
         request.isDone = true;
         
@@ -10001,9 +10057,15 @@ Blu.fn.connect.twitter.afterOAuthProcess = function( options ) {
         'callback' : null
     };
     options = $.extend( _defaults, options || {} );
+
+
+
+    var _url = Blu.app.urls.ajax_base;
+
+    _url = Blu.fn.modifierUrl(_url);
     
     $.getJSON(
-        Blu.app.urls.ajax_base, {'action' : 'get-twitter-connect-info', 'refresh' : Math.random()}, function( json ) {
+        _url, {'action' : 'get-twitter-connect-info', 'refresh' : Math.random()}, function( json ) {
             
             // Si pas de changement (fermeture manuelle de la popup, annulation...)
             if( Blu.user.user_id == json.user_id && Blu.user.screen_name === json.screen_name ) {
@@ -10903,8 +10965,13 @@ Blu.fn.UI.bindEvents = function() {
      * Déconnexion à Twitter
      */
     $('#account .twitter-disconnect').live('click', function() {
+
+
+    var _url = Blu.app.urls.main + '/connect/twitter/disconnect';
+
+    _url = Blu.fn.modifierUrl(_url);
         
-        $.getJSON( Blu.app.urls.main + '/connect/twitter/disconnect', {}, function() {
+        $.getJSON( _url, {}, function() {
             Blu.fn.connect.twitter.afterOAuthProcess( { 'action' : 'disconnect' } ); 
         });
         
@@ -10949,8 +11016,14 @@ Blu.fn.project.publish = function() {
     if( !Blu.projects.current.id ) {
         return;
     }
+     
+    
 
-    $.getJSON( Blu.app.urls.main + '/projects/publish', {'project_id' : Blu.projects.current.id}, function(json) {
+    var _url = Blu.app.urls.main + '/projects/publish';
+
+    _url = Blu.fn.modifierUrl(_url);
+
+    $.getJSON( _url, {'project_id' : Blu.projects.current.id}, function(json) {
 
         if( json.success ) {
 
@@ -10970,6 +11043,14 @@ Blu.fn.project.publish = function() {
     
 };
 
+Blu.fn.modifierUrl = function(_url){
+     
+     if(Blu.fn.localhost()){
+          _url += '?callback=?';
+     }
+     return _url;
+};
+
 
 /**
  * Suppression d'un projet
@@ -10977,6 +11058,8 @@ Blu.fn.project.publish = function() {
  * @param {String} context
  */
 Blu.fn.project.deleteProject = function( project_id, context ) {
+
+    Blu.log('delete projet begins');
     
     context = context || '';
     
@@ -10987,10 +11070,15 @@ Blu.fn.project.deleteProject = function( project_id, context ) {
         return;
     }
     
+
+    var _url = Blu.app.urls.main + '/projects/delete';
+
+    _url = Blu.fn.modifierUrl(_url);
+
     Blu.warn( 'deleteProject > project ' + _project.id + '  (current : ' + Blu.projects.current.id + ')' );
     
 
-    $.getJSON( Blu.app.urls.main + '/projects/delete', {'project_id' : _project.id}, function( json ) {
+    $.getJSON( _url, {'project_id' : _project.id}, function( json ) {
 
         if( json.success ) {
 
@@ -12271,8 +12359,14 @@ Blu.fn.project.create = function( project, options ) {
     var _p = { 'project' : project, 'refresh' : Math.random() };
     
     
+    
+
+    var _url = Blu.app.urls.main + '/projects/create';
+
+    _url = Blu.fn.modifierUrl(_url);
+
     // Création du projet
-    $.getJSON( Blu.app.urls.main + '/projects/create', _p, function( json ) {
+    $.getJSON( _url, _p, function( json ) {
 
         if( json.success ) {
             
@@ -13108,7 +13202,7 @@ Blu.fn.misc.configMixpanel = function() {
     if( !_trackInMixpanel ) {
         Blu.fn.misc.disableMixpanel();
         return;
-    }
+    }Blu.init();
     
     mixpanel.identify( Blu.user.id );
 
