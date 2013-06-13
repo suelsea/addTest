@@ -13160,7 +13160,7 @@ Blu.init = function() {
         });
         mixpanel.track( "Error: Canvas Not Supported", { 'User Agent' : navigator.userAgent } );
         return;
-    } else if( Blu.fn.misc.isPageWidthTooSmall() ) {
+    } /*else if( Blu.fn.misc.isPageWidthTooSmall() ) {
         Blu.fn.UI.popupWindow.open({
             'title'         : 'Device Not Supported',
             'content'       : '<p>Sorry, the Bluenod experience is not optimized for small screens and mobile devices... yet!</p>' + 
@@ -13171,7 +13171,7 @@ Blu.init = function() {
         });
         mixpanel.track( "Error: Device Not Supported (Small Screen)", { 'User Agent' : navigator.userAgent } ); 
         return;
-    }
+    }*/
     
     // Initialisation de la configuration
     Blu.fn.initConfig();
