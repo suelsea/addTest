@@ -6515,6 +6515,23 @@ Blu.fn.project.getGraph = function( options, callback ) {
 };
 
 
+
+
+Blu.fn.modifierUrlGraph = function(_url){
+
+    var _urlPartOne = Blu.app.urls.main + '/graphs/jsonp?url='; 
+
+    if(Blu.fn.localhost()){
+        
+        _url =_urlPartOne+encodeURIComponent(_url);
+        _url += '&callback=?';
+        return _url;
+    }
+}
+
+
+
+
 /**
  * Chargement d'un graphe
  * @param graph
@@ -6564,10 +6581,11 @@ Blu.fn.map.chargeGraphe = function( graph ) {
      */
 
 
+     var _urlOrigin = Blu.app.urls.graphs_base + Blu.projects.current.graphs_dir + graph.filename;
 
-     var _url = Blu.app.urls.graphs_base + Blu.projects.current.graphs_dir + graph.filename;
+     
+     var _url = Blu.fn.modifierUrlGraph(_urlOrigin);
 
-    _url = Blu.fn.modifierUrl(_url);
     $.getJSON( 
         _url, 
         function( json ) {
