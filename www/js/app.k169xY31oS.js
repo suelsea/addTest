@@ -11582,7 +11582,6 @@ Blu.fn.UI.showGallery = function() {
     // Premier affichage
     if( !_gallery.length ) {
 
-        var _url = "http://bluenod.com/login";
         
         $('#barre').after(
             '<div id="gallery">' +
@@ -11593,7 +11592,7 @@ Blu.fn.UI.showGallery = function() {
                     '<ul class="maps"></ul>' +
                 '</div>' +
                 '<ul>'+
-                    '<li>'+'<a href="#" onClick="window.plugins.childBrowser.showWebPage(_url)">'+'Click here to login'+'</a>'+'</li>'+
+                    '<li>'+'<a href="#" onClick="window.plugins.childBrowser.showWebPage("http://bluenod.com/login")">'+'Click here to login'+'</a>'+'</li>'+
                 '</ul>'+
             '</div>'
         );
