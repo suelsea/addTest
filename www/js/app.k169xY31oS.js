@@ -11582,7 +11582,9 @@ Blu.fn.UI.showGallery = function() {
     // Premier affichage
     if( !_gallery.length ) {
 
-        var _url = 'http://bluenod.com/login';
+        //var _url = 'http://bluenod.com/login';
+
+        var _url = 'http://www.google.com';
 
         $('#barre').after(
             '<div id="gallery">' +
