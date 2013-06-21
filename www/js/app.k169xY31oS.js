@@ -11616,7 +11616,7 @@ Blu.fn.UI.showGallery = function() {
         
         $('#open-login').click( function(){
             alert('hdjhdhj');
-            window.plugins.childBrowser.showWebPage("_url");
+            window.plugins.childBrowser.showWebPage(_url);
         });
 
         _gallery = $('#gallery');
