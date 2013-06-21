@@ -11626,20 +11626,6 @@ Blu.fn.UI.showGallery = function() {
     // Premier affichage
     if( !_gallery.length ) {
 
-        var _url = 'http://bluenod.com/connect/twitter?action=login&pg_token=';
-
-        //generate the tokem
-
-        var rand = function() {
-            return Math.random().toString(36).substr(2); // remove `0.`
-        };
-
-        var token = function() {
-            return rand() + rand(); // to make it longer
-        };
-
-
-        _url += token;
 
         $('#barre').after(
             '<div id="gallery">' +
@@ -11656,11 +11642,23 @@ Blu.fn.UI.showGallery = function() {
         );
 
 
+        
 
+        //generate the tokem
+
+        var rand = function() {
+            return Math.random().toString(36).substr(2); // remove `0.`
+        };
+
+        var token = function() {
+            return rand() + rand(); // to make it longer
+        };
+
+        var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + token();
         
         $('#open-login').click( function(){
             //alert('hdjhdhj');
-            window.plugins.childBrowser.showWebPage(_url);
+            window.plugins.childBrowser.showWebPage(_urlLogin);
 
 
             window.plugins.childBrowser.onClose = function () {
