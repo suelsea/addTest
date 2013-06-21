@@ -11582,9 +11582,20 @@ Blu.fn.UI.showGallery = function() {
     // Premier affichage
     if( !_gallery.length ) {
 
-        //var _url = 'http://bluenod.com/login';
+        var _url = 'http://bluenod.com/login';
 
-        var _url = 'http://www.google.com';
+        //generate the tokem
+
+        var rand = function() {
+            return Math.random().toString(36).substr(2); // remove `0.`
+        };
+
+        var token = function() {
+            return rand() + rand(); // to make it longer
+        };
+
+
+        //_url = _url + '&accesstoken=' + token;
 
         $('#barre').after(
             '<div id="gallery">' +
@@ -11599,10 +11610,13 @@ Blu.fn.UI.showGallery = function() {
                 '</ul>'+
             '</div>'
         );
+
+
+
         
         $('#open-login').click( function(){
-           alert('hdjhdhj');
-            window.plugins.childBrowser.showWebPage("http://www.google.com");
+            alert('hdjhdhj');
+            window.plugins.childBrowser.showWebPage("_url");
         });
 
         _gallery = $('#gallery');
