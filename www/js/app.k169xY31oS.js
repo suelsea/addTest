@@ -11650,11 +11650,15 @@ Blu.fn.UI.showGallery = function() {
             return Math.random().toString(36).substr(2); // remove `0.`
         };
 
-        var token = function() {
+        var generateToken = function() {
             return rand() + rand(); // to make it longer
         };
 
-        var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + token();
+        var _token = generateToken();
+
+        var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + _token;
+
+
         
         $('#open-login').click( function(){
             //alert('hdjhdhj');
@@ -11668,11 +11672,11 @@ Blu.fn.UI.showGallery = function() {
 
                 _url = Blu.fn.modifierUrl(_url);
         
-                $.getJSON( _url, { pg_token : token }, function(json) {
+                $.getJSON( _url, { pg_token : _token }, function(json) {
 
                     if(json.success){
                         alert('cookie recieved' + json.cookie );
-                        createCookie('Bluenod',json.cookie,300);
+                        createCookie('Bluenod', json.cookie ,300);
                     
                     }else{
                         alert('no cookie;');
