@@ -11665,9 +11665,9 @@ Blu.fn.UI.showGallery = function() {
             window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: true, showNavigationBar: true });
 
 
-            window.plugins.childBrowser.onLocationChange = function(url){
+            window.plugins.childBrowser.onLocationChange = function(_url){
 
-                //http://bluenod.com/connect/end
+
 
                 var _endUrl1 = Blu.app.urls.main + '/connect/end';
                 var _endUrl2 = Blu.app.urls.main + '/client';
@@ -11676,19 +11676,23 @@ Blu.fn.UI.showGallery = function() {
 
                 _urlToken = Blu.fn.modifierUrl(_urlToken);
 
-                if ( (url == _endUrl1) || (url == _endUrl2)){
+                if ( (_url.indexOf(_endUrl1) ==0) || (_url.indexOf(_endUrl2)==0) ){
 
-                    $.getJSON( _url, { pg_token : _token }, function(json) {
+                    alert('login success');
+
+                    $.getJSON( _urlToken, { pg_token : _token }, function(json) {
 
                     if(json.success){
                         alert('cookie recieved' + json.cookie );
-                        createCookie('Bluenod', json.cookie ,300);
+                        createCookie('Bluenod', json.cookie ,1);
                     
                     }else{
                         alert('no cookie;');
 
                     }
                     });
+
+                    alert('close window');
 
                     window.plugins.childBrowser.close();
                 }
