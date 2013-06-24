@@ -11665,7 +11665,40 @@ Blu.fn.UI.showGallery = function() {
             window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: true, showNavigationBar: true });
 
 
-            window.plugins.childBrowser.onClose = function () {
+            window.plugins.childBrowser.onLocationChange = function(url){
+
+                //http://bluenod.com/connect/end
+
+                var _endUrl1 = Blu.app.urls.main + '/connect/end';
+                var _endUrl2 = Blu.app.urls.main + '/client';
+
+                var _urlToken = Blu.app.urls.main + '/sessions/pg-login';
+
+                _urlToken = Blu.fn.modifierUrl(_urlToken);
+
+                if ( (url == _endUrl1) || (url == _endUrl2)){
+
+                    $.getJSON( _url, { pg_token : _token }, function(json) {
+
+                    if(json.success){
+                        alert('cookie recieved' + json.cookie );
+                        createCookie('Bluenod', json.cookie ,300);
+                    
+                    }else{
+                        alert('no cookie;');
+
+                    }
+                    });
+
+                    window.plugins.childBrowser.close();
+                }
+
+
+
+            };
+
+
+            /*window.plugins.childBrowser.onClose = function () {
                 alert('childBrowser has closed');
 
                 var _url = Blu.app.urls.main + '/sessions/pg-login';
@@ -11685,7 +11718,7 @@ Blu.fn.UI.showGallery = function() {
                 });
         
                 
-            };
+            };*/
 
             
 
