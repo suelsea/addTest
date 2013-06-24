@@ -11662,7 +11662,7 @@ Blu.fn.UI.showGallery = function() {
         
         $('#open-login').click( function(){
             //alert('hdjhdhj');
-            window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: false });
+            window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: false, showNavigationBar: false });
 
 
             window.plugins.childBrowser.onClose = function () {
