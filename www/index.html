@@ -193,19 +193,23 @@
 
                 var connectionType = '';
 
-                alert('test begins');
+                document.addEventListener('deviceready', onDeviceReady, false);
 
-                var networkState = navigator.network.connection.type;
+                function onDeviceReady(){
+                    alert('test begins');
 
-                if(networkState == Connection.NONE){
-                    connectionState = false;
-                }else{
+                    var networkState = navigator.network.connection.type;
 
-                    alert('success connected');
-                    connectionState = true;
+                    if(networkState == Connection.NONE){
+                        connectionState = false;
+                    }else{
+
+                        alert('success connected');
+                        connectionState = true;
+                    }
+
+                    connectionType = networkState;
                 }
-
-                connectionType = networkState;
 
                 //document.addEventListener('deviceready', onDeviceReady(connectionState,connectionType), false);
 
