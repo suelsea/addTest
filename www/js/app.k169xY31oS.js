@@ -11636,7 +11636,7 @@ Blu.fn.UI.showGallery = function() {
     if( !_gallery.length ) {
 
 
-        if(hasCookie){
+ /*       if(hasCookie){
 
             $('#barre').after(
                 '<div id="gallery">' +
@@ -11652,7 +11652,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
         }else{
-
+*/
             $('#barre').after(
                 '<div id="gallery">' +
                     '<div class="wrap">' +
@@ -11667,7 +11667,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
 
-        }
+//        }
 
 
         
@@ -11687,7 +11687,7 @@ Blu.fn.UI.showGallery = function() {
         var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + _token;
 
 
-        $('#open-logout').click( function(){});
+       // $('#open-logout').click( function(){});
 
 
 
@@ -14064,7 +14064,7 @@ Blu.fn.localhost = function() {
 
 
 //teste l'etat de connexion
-document.addEventListener("deviceready", onDeviceReady, false);
+/*document.addEventListener("deviceready", onDeviceReady, false);
 
 Blu.fn.onDeviceReady = function() {
 
@@ -14087,7 +14087,7 @@ Blu.fn.onOnline = function() {
     Blu.isOnline = false;
     Blu.isOffline = true;
 
-};
+};*/
 
 
 
