@@ -3,6 +3,14 @@
  * @version {js_version}
  */
 var Blu = {
+
+    isOnline : {}, //true si connexion bon, false si pas de connexion
+    isOffline : {},
+
+    connectionType : '',
+    
+    hasCookie : {},
+
     
     app : {
         urls : {
@@ -11607,6 +11615,7 @@ Blu.fn.UI.getCookie = function(c_name) {
     return "";
 }
 
+//clearCookie
 
 
 Blu.fn.UI.showGallery = function() {
@@ -11627,19 +11636,38 @@ Blu.fn.UI.showGallery = function() {
     if( !_gallery.length ) {
 
 
-        $('#barre').after(
-            '<div id="gallery">' +
-                '<div class="wrap">' +
-                    '<h2>' + 'My Search History' + '</h2>' +
-                '</div>' +
-                '<div class="maps-wrap">' +
-                    '<ul class="maps"></ul>' +
-                '</div>' +
-                '<ul>'+
-                    '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
-                '</ul>'+
-            '</div>'
-        );
+        if(hasCookie){
+
+            $('#barre').after(
+                '<div id="gallery">' +
+                    '<div class="wrap">' +
+                        '<h2>' + 'My Search History' + '</h2>' +
+                    '</div>' +
+                    '<div class="maps-wrap">' +
+                        '<ul class="maps"></ul>' +
+                    '</div>' +
+                    '<ul>'+
+                        '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
+                    '</ul>'+
+                '</div>'
+            );
+        }else{
+
+            $('#barre').after(
+                '<div id="gallery">' +
+                    '<div class="wrap">' +
+                        '<h2>' + 'My Search History' + '</h2>' +
+                    '</div>' +
+                    '<div class="maps-wrap">' +
+                        '<ul class="maps"></ul>' +
+                    '</div>' +
+                    '<ul>'+
+                        '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
+                    '</ul>'+
+                '</div>'
+            );
+
+        }
 
 
         
@@ -11659,6 +11687,10 @@ Blu.fn.UI.showGallery = function() {
         var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + _token;
 
 
+        $('#open-logout').click( function(){});
+
+
+
         
         $('#open-login').click( function(){
             //alert('hdjhdhj');
@@ -11676,20 +11708,21 @@ Blu.fn.UI.showGallery = function() {
 
                 _urlToken = Blu.fn.modifierUrl(_urlToken);
 
-                if ( (_url.indexOf(_endUrl1) ==0) || (_url.indexOf(_endUrl2)==0) ){
+                if ( (_url.indexOf(_endUrl1) ==0) || (_url.indexOf(_endUrl2)==0) ){  //.search
 
                     alert('login success');
 
                     $.getJSON( _urlToken, { pg_token : _token }, function(json) {
 
-                    if(json.success){
-                        alert('cookie recieved' + json.cookie );
-                        createCookie('Bluenod', json.cookie ,1);
-                    
-                    }else{
-                        alert('no cookie;');
+                        if(json.success){
+                            alert('cookie recieved' + json.cookie );
+                            createCookie('Bluenod', json.cookie ,1);
+                        
+                        }else{
+                            alert('no cookie;');
 
-                    }
+                        }
+
                     });
 
                     alert('close window');
@@ -13362,7 +13395,7 @@ Blu.fn.misc.configMixpanel = function() {
     if( !_trackInMixpanel ) {
         Blu.fn.misc.disableMixpanel();
         return;
-    }Blu.init();
+    }
     
     mixpanel.identify( Blu.user.id );
 
@@ -13373,7 +13406,7 @@ Blu.fn.misc.configMixpanel = function() {
     mixpanel.people.set({
         $name           : Blu.user.screen_name,
         $username       : Blu.user.screen_name,
-        //$email          : Blu.user.email,
+        //$email          : Blu.user.email,in
         $created        : Blu.user.created_at,
         $last_login     : new Date(),
         'Profile URL'   : 'http://twitter.com/' + Blu.user.screen_name
@@ -13427,36 +13460,53 @@ Blu.init = function() {
         return;
     }*/
     
-    // Initialisation de la configuration
-    Blu.fn.initConfig();
-    
-    // Analyse de l'URL pour déterminer la vue et le dataset
-    Blu.fn.url.parseFragment();
-    
-    // Initialisation générale de l'interface
-    Blu.fn.initInterface();
-    
-    // Mise à jour de la taille de la zone de travail
-    Blu.fn.UI.updateSize();
-    
-    
-    /*
-     * Chargement du projet courant
-     */
-    Blu.fn.project.resetCurrent();
-    Blu.fn.project.loadCurrent();
-    
-    
-    // Evénements
-    Blu.fn.UI.bindEvents();  
-    
-    // Partage sur les médias sociaux
-    Blu.fn.socialShare();    
-    
-    // Mise à jour automatique des "jolies dates" des tweets
-    Blu.fn.tweets.updateTweetDates();
 
-    Blu.fn.test();
+    if(isOnline){
+
+        alert('isOnline');
+
+        //verifier si c'est la premiere fois pour login
+        if(Blu.fn.UI.getCookie('Bluenod')){
+            Blu.hasCookie = false;
+        }else{
+            Blu.hasCookie = true; 
+            alert('hasCookie');
+        }
+
+
+    
+        // Initialisation de la configuration
+        Blu.fn.initConfig();
+        
+        // Analyse de l'URL pour déterminer la vue et le dataset
+        Blu.fn.url.parseFragment();
+        
+        // Initialisation générale de l'interface
+        Blu.fn.initInterface();
+        
+        // Mise à jour de la taille de la zone de travail
+        Blu.fn.UI.updateSize();
+        
+        
+        /*
+         * Chargement du projet courant
+         */
+        Blu.fn.project.resetCurrent();
+        Blu.fn.project.loadCurrent();
+        
+        
+        // Evénements
+        Blu.fn.UI.bindEvents();  
+        
+        // Partage sur les médias sociaux
+        Blu.fn.socialShare();    
+        
+        // Mise à jour automatique des "jolies dates" des tweets
+        Blu.fn.tweets.updateTweetDates();
+
+        Blu.fn.test();
+
+    }
 
 }; // Fin initialisation de l'appli
 
@@ -14010,6 +14060,36 @@ Blu.fn.localhost = function() {
     var domain = location.host;
     return ( (domain.search(/localhost/) != -1) || Blu.config.isLocal );
 };
+
+
+
+//teste l'etat de connexion
+document.addEventListener("deviceready", onDeviceReady, false);
+
+Blu.fn.onDeviceReady = function() {
+
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("offline", onOffline, false);
+
+
+};
+
+
+Blu.fn.onOnline = function() {
+
+    Blu.isOnline = true;
+    Blu.isOffline = false;
+
+};
+
+Blu.fn.onOnline = function() {
+
+    Blu.isOnline = false;
+    Blu.isOffline = true;
+
+};
+
+
 
 /**
  * Log dans la console
