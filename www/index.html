@@ -189,45 +189,47 @@
     
             $(document).ready( function() {
 
-var connectionState = false;
+                var connectionState = false;
 
-            var connectionType = '';
+                var connectionType = '';
 
-            document.addEventListener('deviceready', onDeviceReady(connectionState,connectionType), false);
+                //document.addEventListener('deviceready', onDeviceReady(connectionState,connectionType), false);
 
 
-            function onDeviceReady(connectionState,connectionType) {
+                function onDeviceReady(connectionState,connectionType) {
 
-                var networkState = navigator.network.connection.type;
+                    var networkState = navigator.network.connection.type;
 
-                var states = {};
+                    var states = {};
 
-                states[Connection.UNKNOWN]  = 'Unknown connection';
-                states[Connection.ETHERNET] = 'Ethernet connection';
-                states[Connection.WIFI]     = 'WiFi connection';
-                states[Connection.CELL_2G]  = 'Cell 2G connection';
-                states[Connection.CELL_3G]  = 'Cell 3G connection';
-                states[Connection.CELL_4G]  = 'Cell 4G connection';
-                states[Connection.NONE]     = 'No network connection';
+                    states[Connection.UNKNOWN]  = 'Unknown connection';
+                    states[Connection.ETHERNET] = 'Ethernet connection';
+                    states[Connection.WIFI]     = 'WiFi connection';
+                    states[Connection.CELL_2G]  = 'Cell 2G connection';
+                    states[Connection.CELL_3G]  = 'Cell 3G connection';
+                    states[Connection.CELL_4G]  = 'Cell 4G connection';
+                    states[Connection.NONE]     = 'No network connection';
 
-                if(networkState != Connection.NONE){
+                    if(networkState != Connection.NONE){
 
-                    connectionState = true;
+                        connectionState = true;
+                    }
+
+                    connectionType = states[networkState];
+
+                    alert('test connection finishes');
+
+                    //alert('Connection type: ' + states[networkState]);
+
+     
                 }
 
-                connectionType = states[networkState];
-
-                alert('test connection finishes');
-
-                //alert('Connection type: ' + states[networkState]);
-
- 
-            }
+                onDeviceReady(connectionState,connectionType);
 
 
 
 
-                
+
                 
                 // Projets
 
