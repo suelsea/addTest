@@ -198,6 +198,9 @@
                 function onDeviceReady(){
                     alert('test begins');
 
+                    document.addEventListener("online", Blu.fn.onOnline, false);
+                    document.addEventListener("offline", Blu.fn.onOffline, false);
+
                     var networkState = navigator.network.connection.type;
 
                     if(networkState == Connection.NONE){
@@ -210,6 +213,8 @@
 
                     connectionType = networkState;
                 }
+
+
 
                 //document.addEventListener('deviceready', onDeviceReady(connectionState,connectionType), false);
 

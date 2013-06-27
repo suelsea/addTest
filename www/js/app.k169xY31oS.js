@@ -14064,6 +14064,24 @@ Blu.fn.localhost = function() {
 
 
 //teste l'etat de connexion
+
+Blu.fn.onOnline = function() {
+
+    alert('online');
+
+    Blu.isOnline = true;
+    Blu.isOffline = false;
+
+};
+
+Blu.fn.onOffline = function() {
+
+    alert('offline');
+
+    Blu.isOnline = false;
+    Blu.isOffline = true;
+
+};
 /*document.addEventListener("deviceready", onDeviceReady, false);
 
 Blu.fn.onDeviceReady = function() {
@@ -14075,19 +14093,7 @@ Blu.fn.onDeviceReady = function() {
 };
 
 
-Blu.fn.onOnline = function() {
-
-    Blu.isOnline = true;
-    Blu.isOffline = false;
-
-};
-
-Blu.fn.onOnline = function() {
-
-    Blu.isOnline = false;
-    Blu.isOffline = true;
-
-};*/
+*/
 
 
 
