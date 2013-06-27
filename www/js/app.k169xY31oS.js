@@ -13471,6 +13471,8 @@ Blu.init = function() {
             alert('hasCookie');
         }else{
             Blu.hasCookie = false; 
+            alert('noCookie');
+            alert(Blu.fn.UI.getCookie('Bluenod'));
             
         }
 
