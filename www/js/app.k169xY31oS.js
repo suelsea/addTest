@@ -11716,7 +11716,7 @@ Blu.fn.UI.showGallery = function() {
 
                         if(json.success){
                             alert('cookie recieved' + json.cookie );
-                            createCookie('Bluenod', json.cookie ,1);
+                            Blu.fn.UI.createCookie ('Bluenod', json.cookie ,7);
                         
                         }else{
                             alert('no cookie;');
@@ -11727,7 +11727,7 @@ Blu.fn.UI.showGallery = function() {
 
                     alert('close window');
 
-                    window.plugins.childBrowser.close();
+                    //window.plugins.childBrowser.close();
                 }
 
 
