@@ -11112,11 +11112,11 @@ Blu.fn.project.storeProject = function(json){
     for(var i in json.result){
         if(i.type == 'search-user'){
 
-            Blu.projects.user.push( i );
+            Blu.projects.user.push(i);
 
         }else if(i.type == 'search'){
 
-            Blu.projects.search.push( i );
+            Blu.projects.search.push(i);
 
         }
     }
@@ -11774,7 +11774,7 @@ Blu.fn.UI.showGallery = function() {
 
                     Blu.fn.connect.twitter.afterOAuthProcess();
 
-                    Blu.fn.project.getProject();
+                    //Blu.fn.project.getProject();
 
                     alert('close window');
 
