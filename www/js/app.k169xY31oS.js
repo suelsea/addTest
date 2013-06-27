@@ -11083,6 +11083,7 @@ Blu.fn.modifierUrl = function(_url){
      return _url;
 };
 
+/*
 
 //get the list of projets
 Blu.fn.project.getProject = function(){
@@ -11123,7 +11124,7 @@ Blu.fn.project.storeProject = function(json){
 
 
 }
-
+*/
 
 
 
