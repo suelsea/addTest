@@ -7,7 +7,7 @@ var Blu = {
     isOnline : {}, //true si connexion bon, false si pas de connexion
     isOffline : {},
 
-    storage : {},
+
 
     connectionType : '',
     
@@ -10115,7 +10115,7 @@ Blu.fn.connect.twitter.afterOAuthProcess = function( options ) {
             // Remplissage des infos du twitto
             Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
 
-            storage.setItem('Blu.user',JSON.stringify(json));
+            window.localStorage.setItem('Blu.user',JSON.stringify(json));
             
             //Blu.fn.misc.configMixpanel();
             
@@ -13280,12 +13280,12 @@ Blu.fn.initConfig = function() {
     //Blu.fn.connect.twitter.afterOAuthProcess();
     alert('storage begins');
 
-    if( storage.getItem('Blu.user') != ''){
+    if( window.localStorage.getItem('Blu.user') != ''){
 
         alert('user found');
 
 
-        json = JSON.parse(storage.getItem('Blu.user'));
+        json = JSON.parse(window.localStorage.getItem('Blu.user'));
 
         Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
     }
