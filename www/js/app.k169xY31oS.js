@@ -13278,6 +13278,7 @@ Blu.fn.initConfig = function() {
     }
 
     //Blu.fn.connect.twitter.afterOAuthProcess();
+    alert('storage begins');
 
     if( storage.getItem('Blu.user') != ''){
 
