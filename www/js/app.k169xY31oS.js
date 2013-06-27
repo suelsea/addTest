@@ -13279,7 +13279,7 @@ Blu.fn.initConfig = function() {
 
     //Blu.fn.connect.twitter.afterOAuthProcess();
 
-    /*if( storage.getItem('Blu.user') ){
+    if( storage.getItem('Blu.user') ){
 
         alert('user found');
 
@@ -13287,7 +13287,7 @@ Blu.fn.initConfig = function() {
         json = JSON.parse(storage.getItem('Blu.user'));
 
         Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
-    }*/
+    }
 
 
 
