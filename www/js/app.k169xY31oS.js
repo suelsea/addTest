@@ -11084,6 +11084,49 @@ Blu.fn.modifierUrl = function(_url){
 };
 
 
+//get the list of projets
+Blu.fn.project.getProject = function(){
+
+
+    var _url = Blu.app.urls.main + '/api/searches/history.json';
+
+    _url = Blu.fn.modifierUrl(_url);
+
+    $.getJSON( _url, {}, function( json ) {
+
+        if( json.success ){
+
+            Blu.fn.project.storeProject(json.result);
+            window.localStorage.setItem('Blu.project',JSON.stringify(json.result));
+
+
+        }else{
+            alert('fails to get lists of projects');
+        }
+
+}
+
+
+Blu.fn.project.storeProject = function(json){
+
+    for(var i in json.result){
+        if(i.type == 'search-user'){
+
+            Blu.projects.user.push( i );
+
+        }else if(i.type == 'search'){
+
+            Blu.projects.search.push( i );
+
+        }
+    }
+
+
+}
+
+
+
+
 /**
  * Suppression d'un projet
  * @param {integer|String} project_id
@@ -11730,6 +11773,8 @@ Blu.fn.UI.showGallery = function() {
                     });
 
                     Blu.fn.connect.twitter.afterOAuthProcess();
+
+                    Blu.fn.project.getProject();
 
                     alert('close window');
 
@@ -13287,11 +13332,21 @@ Blu.fn.initConfig = function() {
         alert(window.localStorage.getItem('Blu.user'));
 
 
-        json = JSON.parse(window.localStorage.getItem('Blu.user'));
+        var _json = JSON.parse(window.localStorage.getItem('Blu.user'));
 
-        Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+        Blu.user = $.extend( Blu.fn.user.getDefaultUser(), _json );
 
         alert('user changed');
+    }
+
+    if (window.localStorage.getItem('Blu.project')){
+
+        alert('projet found');
+
+        var _jsonPro = JSON.parse(window.localStorage.getItem('Blu.project'));
+
+        Blu.fn.project.storeProject(_jsonPro);
+
     }
 
 
@@ -13303,7 +13358,7 @@ Blu.fn.initConfig = function() {
  */
 Blu.fn.initInterface = function() {
 
-    alert('init interface');
+    //alert('init interface');
     Blu.fn.UI.createGraphHeader();
     Blu.fn.UI.createGraphBottom();
     
