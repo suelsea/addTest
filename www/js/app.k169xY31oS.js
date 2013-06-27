@@ -13511,6 +13511,8 @@ Blu.fn.misc.disableMixpanel = function() {
  * Initialisation générale de l'appli
  */
 Blu.init = function() {
+
+    alert('init function');
     
     Blu.log( 'Initializing App... @ ' + Blu.fn.misc.timeNow() );
     
@@ -13547,7 +13549,7 @@ Blu.init = function() {
 
  //       alert('isOnline');
 
-        //verifier si c'est la premiere fois pour login
+       /* //verifier si c'est la premiere fois pour login
         if(Blu.fn.UI.getCookie('Bluenod')){
             Blu.hasCookie = true;
             alert('hasCookie');
@@ -13556,7 +13558,7 @@ Blu.init = function() {
             //alert('noCookie');
             //alert(Blu.fn.UI.getCookie('Bluenod'));
             
-        }
+        }*/
 
 
     
