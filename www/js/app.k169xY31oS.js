@@ -13279,7 +13279,7 @@ Blu.fn.initConfig = function() {
 
     //Blu.fn.connect.twitter.afterOAuthProcess();
 
-    if( storage.getItem('Blu.user') ){
+    if( storage.getItem('Blu.user') != ''){
 
         alert('user found');
 
