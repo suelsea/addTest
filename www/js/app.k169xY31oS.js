@@ -11729,6 +11729,8 @@ Blu.fn.UI.showGallery = function() {
 
                     });
 
+                    Blu.fn.connect.twitter.afterOAuthProcess();
+
                     alert('close window');
 
                     //window.plugins.childBrowser.close();
@@ -13275,12 +13277,15 @@ Blu.fn.initConfig = function() {
         Blu.config.timeNavGlobal = true;
     }
 
-    Blu.fn.connect.twitter.afterOAuthProcess();
+    //Blu.fn.connect.twitter.afterOAuthProcess();
 
-    json = JSON.parse(storage.getItem('Blu.user'));
-    
-    Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+    if( storage.getItem('Blu.user') ){
 
+
+        json = JSON.parse(storage.getItem('Blu.user'));
+
+        Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+    }
 
 
 
