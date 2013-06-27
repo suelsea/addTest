@@ -11635,7 +11635,7 @@ Blu.fn.UI.showGallery = function() {
     // Premier affichage
     if( !_gallery.length ) {
 
-
+/*
         if(hasCookie){
 
             $('#barre').after(
@@ -11653,7 +11653,7 @@ Blu.fn.UI.showGallery = function() {
             );
         }else{
 
-            $('#barre').after(
+*/            $('#barre').after(
                 '<div id="gallery">' +
                     '<div class="wrap">' +
                         '<h2>' + 'My Search History' + '</h2>' +
@@ -11667,7 +11667,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
 
-        }
+//        }
 
 
         
@@ -11687,7 +11687,7 @@ Blu.fn.UI.showGallery = function() {
         var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + _token;
 
 
-        $('#open-logout').click( function(){});
+ //       $('#open-logout').click( function(){});
 
 
 
