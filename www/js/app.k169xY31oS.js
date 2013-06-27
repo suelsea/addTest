@@ -11083,7 +11083,7 @@ Blu.fn.modifierUrl = function(_url){
      return _url;
 };
 
-/*
+
 
 //get the list of projets
 Blu.fn.project.getProject = function(){
@@ -11097,6 +11097,8 @@ Blu.fn.project.getProject = function(){
 
         if( json.success ){
 
+            alert('get projects succeed');
+
             Blu.fn.project.storeProject(json.result);
             window.localStorage.setItem('Blu.project',JSON.stringify(json.result));
 
@@ -11104,6 +11106,8 @@ Blu.fn.project.getProject = function(){
         }else{
             alert('fails to get lists of projects');
         }
+
+    });
 
 }
 
@@ -11122,9 +11126,8 @@ Blu.fn.project.storeProject = function(json){
         }
     }
 
-
 }
-*/
+
 
 
 
@@ -11775,7 +11778,7 @@ Blu.fn.UI.showGallery = function() {
 
                     Blu.fn.connect.twitter.afterOAuthProcess();
 
-                    //Blu.fn.project.getProject();
+                    Blu.fn.project.getProject();
 
                     alert('close window');
 
@@ -13340,7 +13343,7 @@ Blu.fn.initConfig = function() {
         alert('user changed');
     }
 
-    /*if (window.localStorage.getItem('Blu.project')){
+    if (window.localStorage.getItem('Blu.project')){
 
         alert('projet found');
 
@@ -13348,7 +13351,7 @@ Blu.fn.initConfig = function() {
 
         Blu.fn.project.storeProject(_jsonPro);
 
-    }*/
+    }
 
 
 
@@ -13512,7 +13515,7 @@ Blu.fn.misc.disableMixpanel = function() {
  */
 Blu.init = function() {
 
-    alert('init function');
+    //alert('init function');
     
     Blu.log( 'Initializing App... @ ' + Blu.fn.misc.timeNow() );
     
