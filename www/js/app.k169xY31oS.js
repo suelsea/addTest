@@ -11729,7 +11729,7 @@ Blu.fn.UI.showGallery = function() {
 
                     });
 
-                    Blu.fn.connect.twitter.afterOAuthProcess();
+                    //Blu.fn.connect.twitter.afterOAuthProcess();
 
                     alert('close window');
 
@@ -13279,13 +13279,15 @@ Blu.fn.initConfig = function() {
 
     //Blu.fn.connect.twitter.afterOAuthProcess();
 
-    if( storage.getItem('Blu.user') ){
+    /*if( storage.getItem('Blu.user') ){
+
+        alert('user found');
 
 
         json = JSON.parse(storage.getItem('Blu.user'));
 
         Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
-    }
+    }*/
 
 
 
