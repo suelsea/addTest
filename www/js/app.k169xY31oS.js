@@ -11099,6 +11099,8 @@ Blu.fn.project.getProject = function(){
 
             alert('get projects succeed');
 
+            alert(json.result);
+
             Blu.fn.project.storeProject(json.result);
             window.localStorage.setItem('Blu.project',JSON.stringify(json.result));
 
@@ -11114,14 +11116,14 @@ Blu.fn.project.getProject = function(){
 
 Blu.fn.project.storeProject = function(json){
 
-    for(var i in json.result){
-        if(i.type == 'search-user'){
+    for(var _i in json.result){
+        if(_i.type == 'search-user'){
 
-            Blu.projects.user.push(i);
+            Blu.projects.user.push(_i);
 
-        }else if(i.type == 'search'){
+        }else if(_i.type == 'search'){
 
-            Blu.projects.search.push(i);
+            Blu.projects.search.push(_i);
 
         }
     }
