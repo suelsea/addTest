@@ -11086,7 +11086,7 @@ Blu.fn.modifierUrl = function(_url){
 
 
 //get the list of projets
-Blu.fn.project.getProject = function(){
+Blu.fn.projects.getSearchHistory = function(){
 
 
     var _url = Blu.app.urls.main + '/api/searches/history.json';
@@ -11099,10 +11099,10 @@ Blu.fn.project.getProject = function(){
 
             alert('get projects succeed');
 
-            alert(json.result);
+            //alert(json.results);
 
-            Blu.fn.project.storeProject(json.result);
-            window.localStorage.setItem('Blu.project',JSON.stringify(json.result));
+            Blu.fn.projects.storeProjects( json.results );
+            window.localStorage.setItem('Blu.project',JSON.stringify(json.results));
 
 
         }else{
@@ -11114,16 +11114,19 @@ Blu.fn.project.getProject = function(){
 }
 
 
-Blu.fn.project.storeProject = function(json){
+Blu.fn.projects.storeProjects = function( projects ){
 
-    for(var _i in json.result){
-        if(_i.type == 'search-user'){
+    for(var _i in projects){
 
-            Blu.projects.user.push(_i);
+        var _project = projects[_i];
+        
+        if( _project.type === 'search-user' ){
 
-        }else if(_i.type == 'search'){
+            Blu.projects.user.push( _project );
 
-            Blu.projects.search.push(_i);
+        }else if( _project.type === 'search' ){
+
+            Blu.projects.search.push( _project );
 
         }
     }
@@ -11780,7 +11783,7 @@ Blu.fn.UI.showGallery = function() {
 
                     Blu.fn.connect.twitter.afterOAuthProcess();
 
-                    Blu.fn.project.getProject();
+                    Blu.fn.projects.getSearchHistory();
 
                     alert('close window');
 
@@ -13349,9 +13352,9 @@ Blu.fn.initConfig = function() {
 
         alert('projet found');
 
-        var _jsonPro = JSON.parse(window.localStorage.getItem('Blu.project'));
+        var _jsonPro = JSON.parse( window.localStorage.getItem('Blu.project') );
 
-        Blu.fn.project.storeProject(_jsonPro);
+        Blu.fn.projects.storeProjects( _jsonPro );
 
     }
 
