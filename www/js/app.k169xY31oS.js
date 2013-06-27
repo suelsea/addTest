@@ -7,6 +7,8 @@ var Blu = {
     isOnline : {}, //true si connexion bon, false si pas de connexion
     isOffline : {},
 
+    storage : {},
+
     connectionType : '',
     
     hasCookie : {},
@@ -10112,6 +10114,8 @@ Blu.fn.connect.twitter.afterOAuthProcess = function( options ) {
             
             // Remplissage des infos du twitto
             Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+
+            storage.setItem('Blu.user',JSON.stringify(json));
             
             //Blu.fn.misc.configMixpanel();
             
@@ -13271,6 +13275,15 @@ Blu.fn.initConfig = function() {
         Blu.config.timeNavGlobal = true;
     }
 
+    Blu.fn.connect.twitter.afterOAuthProcess();
+
+    json = JSON.parse(storage.getItem('Blu.user'));
+    
+    Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+
+
+
+
 };
 
 /**
@@ -13471,8 +13484,8 @@ Blu.init = function() {
             alert('hasCookie');
         }else{
             Blu.hasCookie = false; 
-            alert('noCookie');
-            alert(Blu.fn.UI.getCookie('Bluenod'));
+            //alert('noCookie');
+            //alert(Blu.fn.UI.getCookie('Bluenod'));
             
         }
 
