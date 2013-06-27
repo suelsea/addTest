@@ -13280,14 +13280,18 @@ Blu.fn.initConfig = function() {
     //Blu.fn.connect.twitter.afterOAuthProcess();
     alert('storage begins');
 
-    if( window.localStorage.getItem('Blu.user') != ''){
+    if( window.localStorage.getItem('Blu.user')){
 
         alert('user found');
+
+        alert(window.localStorage.getItem('Blu.user'));
 
 
         json = JSON.parse(window.localStorage.getItem('Blu.user'));
 
         Blu.user = $.extend( Blu.fn.user.getDefaultUser(), json );
+
+        alert('user changed');
     }
 
 
@@ -13299,6 +13303,7 @@ Blu.fn.initConfig = function() {
  */
 Blu.fn.initInterface = function() {
 
+    alert('init interface');
     Blu.fn.UI.createGraphHeader();
     Blu.fn.UI.createGraphBottom();
     
