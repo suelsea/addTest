@@ -13461,9 +13461,9 @@ Blu.init = function() {
     }*/
     
 
-    if(isOnline){
+ //   if(isOnline){
 
-        alert('isOnline');
+ //       alert('isOnline');
 
         //verifier si c'est la premiere fois pour login
         if(Blu.fn.UI.getCookie('Bluenod')){
@@ -13507,7 +13507,7 @@ Blu.init = function() {
 
         Blu.fn.test();
 
-    }
+//    }
 
 }; // Fin initialisation de l'appli
 
