@@ -13467,10 +13467,11 @@ Blu.init = function() {
 
         //verifier si c'est la premiere fois pour login
         if(Blu.fn.UI.getCookie('Bluenod')){
-            Blu.hasCookie = false;
-        }else{
-            Blu.hasCookie = true; 
+            Blu.hasCookie = true;
             alert('hasCookie');
+        }else{
+            Blu.hasCookie = false; 
+            
         }
 
 
