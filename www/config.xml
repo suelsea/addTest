@@ -67,6 +67,8 @@
     <access origin="http://bluenod.com" subdomains="true" />
     <access origin="https://api.twitter.com" subdomains="true" />
     <access origin="http://twitter.com" subdomains="true" />
+    <access origin="http://twimg.com" subdomains="true" />
+    <access origin="http://a0.twimg.com" subdomains="true" />
 
 
     <!--
