@@ -13339,7 +13339,7 @@ Blu.fn.initConfig = function() {
         alert('user changed');
     }
 
-    if (window.localStorage.getItem('Blu.project')){
+    /*if (window.localStorage.getItem('Blu.project')){
 
         alert('projet found');
 
@@ -13347,7 +13347,7 @@ Blu.fn.initConfig = function() {
 
         Blu.fn.project.storeProject(_jsonPro);
 
-    }
+    }*/
 
 
 
