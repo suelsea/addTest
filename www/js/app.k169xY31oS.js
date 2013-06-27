@@ -11636,7 +11636,7 @@ Blu.fn.UI.showGallery = function() {
     if( !_gallery.length ) {
 
 
- /*       if(hasCookie){
+        if(hasCookie){
 
             $('#barre').after(
                 '<div id="gallery">' +
@@ -11652,7 +11652,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
         }else{
-*/
+
             $('#barre').after(
                 '<div id="gallery">' +
                     '<div class="wrap">' +
@@ -11667,7 +11667,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
 
-//        }
+        }
 
 
         
@@ -11687,7 +11687,7 @@ Blu.fn.UI.showGallery = function() {
         var _urlLogin = 'http://bluenod.com/connect/twitter?action=login&pg_token=' + _token;
 
 
-       // $('#open-logout').click( function(){});
+        $('#open-logout').click( function(){});
 
 
 
@@ -13461,9 +13461,9 @@ Blu.init = function() {
     }*/
     
 
-//    if(isOnline){
+    if(isOnline){
 
-/*        alert('isOnline');
+        alert('isOnline');
 
         //verifier si c'est la premiere fois pour login
         if(Blu.fn.UI.getCookie('Bluenod')){
@@ -13473,7 +13473,7 @@ Blu.init = function() {
             alert('hasCookie');
         }
 
-*/
+
     
         // Initialisation de la configuration
         Blu.fn.initConfig();
@@ -13506,7 +13506,7 @@ Blu.init = function() {
 
         Blu.fn.test();
 
-//    }
+    }
 
 }; // Fin initialisation de l'appli
 
@@ -14067,7 +14067,7 @@ Blu.fn.localhost = function() {
 
 Blu.fn.onOnline = function() {
 
-    alert('online');
+    //alert('online');
 
     Blu.isOnline = true;
     Blu.isOffline = false;
@@ -14076,7 +14076,7 @@ Blu.fn.onOnline = function() {
 
 Blu.fn.onOffline = function() {
 
-    alert('offline');
+    //alert('offline');
 
     Blu.isOnline = false;
     Blu.isOffline = true;
