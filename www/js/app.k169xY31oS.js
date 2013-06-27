@@ -11729,7 +11729,7 @@ Blu.fn.UI.showGallery = function() {
 
                     });
 
-                    //Blu.fn.connect.twitter.afterOAuthProcess();
+                    Blu.fn.connect.twitter.afterOAuthProcess();
 
                     alert('close window');
 
