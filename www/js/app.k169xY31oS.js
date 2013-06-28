@@ -11810,7 +11810,7 @@ Blu.fn.UI.showGallery = function() {
       
         $('#open-login').click( function(){
             //alert('hdjhdhj');
-            window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: true, showNavigationBar: true });
+            window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: false, showNavigationBar: false });
 
 
             window.plugins.childBrowser.onLocationChange = function(_url){
@@ -11861,7 +11861,7 @@ Blu.fn.UI.showGallery = function() {
 
                     
 
-                    //window.plugins.childBrowser.close();
+                    window.plugins.childBrowser.close();
                 }
 
 
@@ -14255,7 +14255,7 @@ Blu.fn.localhost = function() {
 
 Blu.fn.onOnline = function() {
 
-    //alert('online');
+    alert('you are online, enjoy it!');
 
     Blu.isOnline = true;
     Blu.isOffline = false;
@@ -14264,7 +14264,7 @@ Blu.fn.onOnline = function() {
 
 Blu.fn.onOffline = function() {
 
-    //alert('offline');
+    alert('offline, please check your internet');
 
     Blu.isOnline = false;
     Blu.isOffline = true;
