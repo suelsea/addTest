@@ -10203,8 +10203,40 @@ Blu.fn.UI.menuAccount = function() {
         
         _list.push( '<li class="divider"></li>' );
         
-        _list.push( '<li><a class="logout" href="'+ Blu.app.urls.main + '/logout?redirect=' + encodeURIComponent( document.URL ) + '">' + 'Log out' + '</a></li>' );
+        _list.push( '<li><a id="logout" href="#">' + 'Log out' + '</a></li>' );
+
+        $('#logout').click(function(){
+
+            //clear infos of users and projects in localstorage     
+            window.localStorage.removeItem('Blu.user');
+
+            window.localStorage.removeItem('Blu.project');
+
+            //clear cookies
+            Blu.fn.UI.eraseCookie('Bluenod');
+
+            //clear blu.user, blu.project
+            Blu.projects.search         = [];
+            Blu.projects.user           = [];
+            Blu.projects.home_timeline  = {};  
+            Blu.user.id                 = [];
+            Blu.user.screen_name        = '';
+            Blu.user.user_id            = '';
+            Blu.user.profile_image_url  = '';
+            Blu.user.created_at         = [];
+            Blu.user.isFromTeam         = [];
+
+            Blu.user.can.createPremiumProjects  = [];
+            Blu.user.can.createHashtagSearch    = [];
+            Blu.user.can.oneClickMapUser        = [];
+            Blu.user.can.exportTopUsersCsv      = [];
+
+        });
+
+
         
+        
+
     } else {
         
         //_links.push( '<li><a class="request-invite" href="'+ Blu.app.urls.main + '/logout?redirect=' + encodeURIComponent( document.URL ) + '">' + 'Logout' + '</a></li>' );
@@ -11672,7 +11704,9 @@ Blu.fn.UI.getCookie = function(c_name) {
 }
 
 //clearCookie
-
+Blu.fn.UI.eraseCookie = function(c_name) {
+    Blu.fn.UI.createCookie(c_name,"",-1);
+}
 
 Blu.fn.UI.showGallery = function() {
     
