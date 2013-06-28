@@ -10205,7 +10205,9 @@ Blu.fn.UI.menuAccount = function() {
         
         _list.push( '<li><a id="logout" href="#">' + 'Log out' + '</a></li>' );
 
-        $('#logout').click(function(){
+        $('#logout').click( function(){
+
+            alert('log out begins');
 
             //clear infos of users and projects in localstorage     
             window.localStorage.removeItem('Blu.user');
@@ -11743,7 +11745,9 @@ Blu.fn.UI.showGallery = function() {
             );
         }else{
 
-*/            $('#barre').after(
+*/            
+         if( Blu.user.user_id ){
+            $('#barre').after(
                 '<div id="gallery">' +
                     '<div class="wrap">' +
                         '<h2>' + 'My Search History' + '</h2>' +
@@ -11752,12 +11756,23 @@ Blu.fn.UI.showGallery = function() {
                         '<ul class="maps"></ul>' +
                     '</div>' +
                     '<ul>'+
+                        '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
+                    '</ul>'+
+                '</div>'
+            );
+
+         }else {   
+            $('#barre').after(
+                '<div id="gallery">' +
+                    '<ul>'+
                         '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
                     '</ul>'+
                 '</div>'
             );
 
-//        }
+            
+
+        }
 
 
         
@@ -11778,10 +11793,39 @@ Blu.fn.UI.showGallery = function() {
 
 
  //       $('#open-logout').click( function(){});
+        $('#open-logout').click( function(){
+
+            alert('log out begins');
+
+            //clear infos of users and projects in localstorage     
+            window.localStorage.removeItem('Blu.user');
+
+            window.localStorage.removeItem('Blu.project');
+
+            //clear cookies
+            Blu.fn.UI.eraseCookie('Bluenod');
+
+            //clear blu.user, blu.project
+            Blu.projects.search         = [];
+            Blu.projects.user           = [];
+            Blu.projects.home_timeline  = {};  
+            Blu.user.id                 = [];
+            Blu.user.screen_name        = '';
+            Blu.user.user_id            = '';
+            Blu.user.profile_image_url  = '';
+            Blu.user.created_at         = [];
+            Blu.user.isFromTeam         = [];
+
+            Blu.user.can.createPremiumProjects  = [];
+            Blu.user.can.createHashtagSearch    = [];
+            Blu.user.can.oneClickMapUser        = [];
+            Blu.user.can.exportTopUsersCsv      = [];
+
+        });
 
 
 
-        
+      
         $('#open-login').click( function(){
             //alert('hdjhdhj');
             window.plugins.childBrowser.showWebPage(_urlLogin, { showLocationBar: true, showNavigationBar: true });
