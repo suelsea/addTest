@@ -11761,6 +11761,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
 
+
          }else {   
             $('#barre').after(
                 '<div id="gallery">' +
@@ -11769,6 +11770,7 @@ Blu.fn.UI.showGallery = function() {
                     '</ul>'+
                 '</div>'
             );
+            $('#barre .new-search').hide();
 
 
 
@@ -11897,6 +11899,8 @@ Blu.fn.UI.showGallery = function() {
             Blu.user.can.exportTopUsersCsv      = [];
 
             $('#open-logout').hide();
+
+            $('#barre .new-search').hide();
 
             $('#barre').after(
                 '<div id="gallery">' +
