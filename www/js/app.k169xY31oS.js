@@ -11770,7 +11770,7 @@ Blu.fn.UI.showGallery = function() {
                 '</div>'
             );
 
-            
+
 
         }
 
@@ -11864,6 +11864,21 @@ Blu.fn.UI.showGallery = function() {
                     Blu.fn.projects.getSearchHistory();
 
                     alert('close window');
+
+
+                    $('#barre').after(
+                        '<div id="gallery">' +
+                            '<div class="wrap">' +
+                                '<h2>' + 'My Search History' + '</h2>' +
+                            '</div>' +
+                            '<div class="maps-wrap">' +
+                                '<ul class="maps"></ul>' +
+                            '</div>' +
+                            '<ul>'+
+                                '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
+                            '</ul>'+
+                        '</div>'
+                    );
 
                     //window.plugins.childBrowser.close();
                 }
