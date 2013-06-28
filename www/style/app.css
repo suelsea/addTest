@@ -271,17 +271,17 @@ hr {
 
 #open-login {
     background: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245)) repeat scroll 0% 0% rgb(255, 255, 255);
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
-    color: rgb(85, 85, 85);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    color: rgb(15, 15, 65);
     text-shadow: none;
 }
     
 #open-logout {
     background: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245)) repeat scroll 0% 0% rgb(255, 255, 255);
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
-    color: rgb(85, 85, 85);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    color: rgb(15, 15, 65);
     text-shadow: none;
 }
 

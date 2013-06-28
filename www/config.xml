@@ -54,6 +54,9 @@
     -->
 
     <gap:plugin name="ChildBrowser"/>
+
+
+    <icon src="style/icon/icon.jpg" />
     <!--
         Define access to external domains.
 
