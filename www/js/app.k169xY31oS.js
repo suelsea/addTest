@@ -11837,6 +11837,10 @@ Blu.fn.UI.showGallery = function() {
 
                     alert('close window');
 
+                    _gallery.find('').hide();
+
+                    $('#open-login').hide();
+
 
                     $('#barre').after(
                         '<div id="gallery">' +
@@ -11891,6 +11895,8 @@ Blu.fn.UI.showGallery = function() {
             Blu.user.can.createHashtagSearch    = [];
             Blu.user.can.oneClickMapUser        = [];
             Blu.user.can.exportTopUsersCsv      = [];
+
+            $('#open-logout').hide();
 
             $('#barre').after(
                 '<div id="gallery">' +
