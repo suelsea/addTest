@@ -11710,6 +11710,8 @@ Blu.fn.UI.eraseCookie = function(c_name) {
     Blu.fn.UI.createCookie(c_name,"",-1);
 }
 
+
+
 Blu.fn.UI.showGallery = function() {
     
     var _gallery = $('#gallery'),
@@ -11766,16 +11768,17 @@ Blu.fn.UI.showGallery = function() {
 
 
         if( Blu.user.user_id ){
-            $('#gallery .open-login').hide();  
+            $('#open-login').hide();  
+            
 
         }else {
 
-            $('#gallery .open-logout').hide();
-            $('#gallery .open-login').show();
+            $('#open-logout').hide();
+            $('#open-login').show();
             $('#barre .new-search').hide();
             $('#gallery .wrap').hide();
             $('#gallery .maps-wrap').hide();
-            $('#barre .main-menu').hide();
+            $('#main-menu').hide();
 
 
 
@@ -11846,12 +11849,12 @@ Blu.fn.UI.showGallery = function() {
 
                     _gallery.find('').hide();
 
-                    $('#gallery .open-logout').show();
-                    $('#gallery .open-login').hide();
+                    $('#open-logout').show();
+                    $('#open-login').hide();
                     $('#barre .new-search').show();
                     $('#gallery .wrap').show();
                     $('#gallery .maps-wrap').show();
-                    $('#barre .main-menu').show();
+                    $('#main-menu').show();
 
                     
 
@@ -11903,11 +11906,11 @@ Blu.fn.UI.showGallery = function() {
             $('#barre .new-search').hide();
 
             
-            $('#gallery .open-login').show();
+            $('#open-login').show();
             
             $('#gallery .wrap').hide();
             $('#gallery .maps-wrap').hide();
-            $('#barre .main-menu').hide();
+            $('#main-menu').hide();
 
         });
 
