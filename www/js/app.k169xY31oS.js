@@ -11745,32 +11745,37 @@ Blu.fn.UI.showGallery = function() {
             );
         }else{
 
-*/            
-         if( Blu.user.user_id ){
-            $('#barre').after(
-                '<div id="gallery">' +
-                    '<div class="wrap">' +
-                        '<h2>' + 'My Search History' + '</h2>' +
-                    '</div>' +
-                    '<div class="maps-wrap">' +
-                        '<ul class="maps"></ul>' +
-                    '</div>' +
-                    '<ul>'+
-                        '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
-                    '</ul>'+
-                '</div>'
-            );
+*/       
+
+        $('#barre').after(
+            '<div id="gallery">' +
+                '<div class="wrap">' +
+                    '<h2>' + 'My Search History' + '</h2>' +
+                '</div>' +
+                '<div class="maps-wrap">' +
+                    '<ul class="maps"></ul>' +
+                '</div>' +
+                '<ul>'+
+                    '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
+                '</ul>'+
+                '<ul>'+
+                    '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
+                '</ul>'+
+            '</div>'
+        );
 
 
-         }else {   
-            $('#barre').after(
-                '<div id="gallery">' +
-                    '<ul>'+
-                        '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
-                    '</ul>'+
-                '</div>'
-            );
+        if( Blu.user.user_id ){
+            $('#gallery .open-login').hide();  
+
+        }else {
+
+            $('#gallery .open-logout').hide();
+            $('#gallery .open-login').show();
             $('#barre .new-search').hide();
+            $('#gallery .wrap').hide();
+            $('#gallery .maps-wrap').hide();
+            $('#barre .main-menu').hide();
 
 
 
@@ -11841,22 +11846,17 @@ Blu.fn.UI.showGallery = function() {
 
                     _gallery.find('').hide();
 
-                    $('#open-login').hide();
+                    $('#gallery .open-logout').show();
+                    $('#gallery .open-login').hide();
+                    $('#barre .new-search').show();
+                    $('#gallery .wrap').show();
+                    $('#gallery .maps-wrap').show();
+                    $('#barre .main-menu').show();
+
+                    
 
 
-                    $('#barre').after(
-                        '<div id="gallery">' +
-                            '<div class="wrap">' +
-                                '<h2>' + 'My Search History' + '</h2>' +
-                            '</div>' +
-                            '<div class="maps-wrap">' +
-                                '<ul class="maps"></ul>' +
-                            '</div>' +
-                            '<ul>'+
-                                '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
-                            '</ul>'+
-                        '</div>'
-                    );
+                    
 
                     //window.plugins.childBrowser.close();
                 }
@@ -11902,13 +11902,12 @@ Blu.fn.UI.showGallery = function() {
 
             $('#barre .new-search').hide();
 
-            $('#barre').after(
-                '<div id="gallery">' +
-                    '<ul>'+
-                        '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
-                    '</ul>'+
-                '</div>'
-            );
+            
+            $('#gallery .open-login').show();
+            
+            $('#gallery .wrap').hide();
+            $('#gallery .maps-wrap').hide();
+            $('#barre .main-menu').hide();
 
         });
 
