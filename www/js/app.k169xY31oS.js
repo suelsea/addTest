@@ -11793,35 +11793,7 @@ Blu.fn.UI.showGallery = function() {
 
 
  //       $('#open-logout').click( function(){});
-        $('#open-logout').click( function(){
-
-            alert('log out begins');
-
-            //clear infos of users and projects in localstorage     
-            window.localStorage.removeItem('Blu.user');
-
-            window.localStorage.removeItem('Blu.project');
-
-            //clear cookies
-            Blu.fn.UI.eraseCookie('Bluenod');
-
-            //clear blu.user, blu.project
-            Blu.projects.search         = [];
-            Blu.projects.user           = [];
-            Blu.projects.home_timeline  = {};  
-            Blu.user.id                 = [];
-            Blu.user.screen_name        = '';
-            Blu.user.user_id            = '';
-            Blu.user.profile_image_url  = '';
-            Blu.user.created_at         = [];
-            Blu.user.isFromTeam         = [];
-
-            Blu.user.can.createPremiumProjects  = [];
-            Blu.user.can.createHashtagSearch    = [];
-            Blu.user.can.oneClickMapUser        = [];
-            Blu.user.can.exportTopUsersCsv      = [];
-
-        });
+       
 
 
 
@@ -11888,29 +11860,45 @@ Blu.fn.UI.showGallery = function() {
             };
 
 
-            /*window.plugins.childBrowser.onClose = function () {
-                alert('childBrowser has closed');
-
-                var _url = Blu.app.urls.main + '/sessions/pg-login';
-
-                _url = Blu.fn.modifierUrl(_url);
-        
-                $.getJSON( _url, { pg_token : _token }, function(json) {
-
-                    if(json.success){
-                        alert('cookie recieved' + json.cookie );
-                        createCookie('Bluenod', json.cookie ,300);
-                    
-                    }else{
-                        alert('no cookie;');
-
-                    }
-                });
-        
-                
-            };*/
-
             
+
+        });
+
+        $('#open-logout').click( function(){
+
+            alert('log out begins');
+
+            //clear infos of users and projects in localstorage     
+            window.localStorage.removeItem('Blu.user');
+
+            window.localStorage.removeItem('Blu.project');
+
+            //clear cookies
+            Blu.fn.UI.eraseCookie('Bluenod');
+
+            //clear blu.user, blu.project
+            Blu.projects.search         = [];
+            Blu.projects.user           = [];
+            Blu.projects.home_timeline  = {};  
+            Blu.user.id                 = [];
+            Blu.user.screen_name        = '';
+            Blu.user.user_id            = '';
+            Blu.user.profile_image_url  = '';
+            Blu.user.created_at         = [];
+            Blu.user.isFromTeam         = [];
+
+            Blu.user.can.createPremiumProjects  = [];
+            Blu.user.can.createHashtagSearch    = [];
+            Blu.user.can.oneClickMapUser        = [];
+            Blu.user.can.exportTopUsersCsv      = [];
+
+            $('#barre').after(
+                '<div id="gallery">' +
+                    '<ul>'+
+                        '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
+                    '</ul>'+
+                '</div>'
+            );
 
         });
 
