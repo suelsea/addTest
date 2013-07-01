@@ -10207,7 +10207,7 @@ Blu.fn.UI.menuAccount = function() {
 
         $('#logout').click( function(){
 
-            alert('log out begins');
+            //alert('log out begins');
 
             //clear infos of users and projects in localstorage     
             window.localStorage.removeItem('Blu.user');
@@ -11131,7 +11131,7 @@ Blu.fn.projects.getSearchHistory = function(){
 
         if( json.success ){
 
-            alert('get projects succeed');
+            //alert('get projects succeed');
 
             //alert(json.results);
 
@@ -11140,7 +11140,7 @@ Blu.fn.projects.getSearchHistory = function(){
 
 
         }else{
-            alert('fails to get lists of projects');
+            //alert('fails to get lists of projects');
         }
 
     });
@@ -11758,10 +11758,10 @@ Blu.fn.UI.showGallery = function() {
                     '<ul class="maps"></ul>' +
                 '</div>' +
                 '<ul>'+
-                    '<li>'+'<a id="open-login" href="#">'+'Click here to login'+'</a>'+'</li>'+ // 
+                    '<li>'+'<a id="open-login" href="#">'+'Log in with twitter'+'</a>'+'</li>'+ // 
                 '</ul>'+
                 '<ul>'+
-                    '<li>'+'<a id="open-logout" href="#">'+'Click here to logout'+'</a>'+'</li>'+ // 
+                    '<li>'+'<a id="open-logout" href="#">'+'Logout'+'</a>'+'</li>'+ // 
                 '</ul>'+
             '</div>'
         );
@@ -11826,16 +11826,16 @@ Blu.fn.UI.showGallery = function() {
 
                 if ( (_url.indexOf(_endUrl1) ==0) || (_url.indexOf(_endUrl2)==0) ){  //.search
 
-                    alert('login success');
+                    //alert('login success');
 
                     $.getJSON( _urlToken, { pg_token : _token }, function(json) {
 
                         if(json.success){
-                            alert('cookie recieved' + json.cookie );
+                            //alert('cookie recieved' + json.cookie );
                             Blu.fn.UI.createCookie ('Bluenod', json.cookie ,7);
                         
                         }else{
-                            alert('no cookie;');
+                            //alert('no cookie;');
 
                         }
 
@@ -11845,7 +11845,7 @@ Blu.fn.UI.showGallery = function() {
 
                     Blu.fn.projects.getSearchHistory();
 
-                    alert('close window');
+                    //alert('close window');
 
                     _gallery.find('').hide();
 
@@ -11875,7 +11875,7 @@ Blu.fn.UI.showGallery = function() {
 
         $('#open-logout').click( function(){
 
-            alert('log out begins');
+            //alert('log out begins');
 
             //clear infos of users and projects in localstorage     
             window.localStorage.removeItem('Blu.user');
@@ -13425,25 +13425,25 @@ Blu.fn.initConfig = function() {
     }
 
     //Blu.fn.connect.twitter.afterOAuthProcess();
-    alert('storage begins');
+    //alert('storage begins');
 
     if( window.localStorage.getItem('Blu.user')){
 
-        alert('user found');
+        //alert('user found');
 
-        alert(window.localStorage.getItem('Blu.user'));
+        //alert(window.localStorage.getItem('Blu.user'));
 
 
         var _json = JSON.parse(window.localStorage.getItem('Blu.user'));
 
         Blu.user = $.extend( Blu.fn.user.getDefaultUser(), _json );
 
-        alert('user changed');
+        //alert('user changed');
     }
 
     if (window.localStorage.getItem('Blu.project')){
 
-        alert('projet found');
+        //alert('projet found');
 
         var _jsonPro = JSON.parse( window.localStorage.getItem('Blu.project') );
 
